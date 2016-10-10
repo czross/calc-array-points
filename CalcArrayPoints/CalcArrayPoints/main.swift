@@ -35,3 +35,33 @@ func simpleMath(firstNum: Int, secondNum: Int, operand: (Int, Int) -> Int) -> In
     return ret
 }
 
+func arrayAdd(array: [Int]) -> Int {
+    var ret: Int = 0
+    for num in array {
+        ret += num
+    }
+    return ret
+}
+
+func arrayMultiply(array: [Int]) -> Int {
+    var ret: Int = 0
+    for num in array {
+        ret *= num
+    }
+    return ret
+}
+
+func arrayCount(array: [Int]) -> Int {
+    let ret = array.count
+    return ret
+}
+
+func arrayAverage(array: [Int]) -> Int {
+    let count = array.count
+    var ret = arrayAdd(array: array)
+    ret = ret / count
+    return ret
+}
+
+
+
