@@ -10,4 +10,23 @@ import Foundation
 
 print("Hello, World!")
 
+func add(first: Int, second: Int) -> Int {
+    let ret = first + second
+    return ret
+}
+
+func subtract(first: Int, second: Int) -> Int {
+    let ret = first - second
+    return ret
+}
+
+func multiply(first: Int, second: Int) -> Int {
+    let ret = first * second
+    return ret
+}
+
+func divide(first: Int, second: Int) -> Int {
+    let ret = first / second
+    return ret
+}
 
