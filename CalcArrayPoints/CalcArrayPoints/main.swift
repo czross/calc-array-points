@@ -30,3 +30,8 @@ func divide(first: Int, second: Int) -> Int {
     return ret
 }
 
+func simpleMath(firstNum: Int, secondNum: Int, operand: (Int, Int) -> Int) -> Int {
+    let ret = operand(firstNum, secondNum)
+    return ret
+}
+
