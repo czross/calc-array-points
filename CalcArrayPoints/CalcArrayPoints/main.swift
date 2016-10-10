@@ -62,6 +62,11 @@ func arrayAverage(array: [Int]) -> Int {
     ret = ret / count
     return ret
 }
+/*
+func arrayMath(array: [Int], operation: ([Int])) -> Int {
+    let nums = array
+    let ret = operation(nums)
+    return ret
+}
 
-
-
+*/
