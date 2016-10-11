@@ -8,7 +8,6 @@
 
 import Foundation
 
-print("Hello, World!")
 
 func add(first: Int, second: Int) -> Int {
     let ret = first + second
@@ -62,11 +61,14 @@ func arrayAverage(array: [Int]) -> Int {
     ret = ret / count
     return ret
 }
-/*
-func arrayMath(array: [Int], operation: ([Int])) -> Int {
-    let nums = array
-    let ret = operation(nums)
-    return ret
+
+func arrayMath(array: [Int]) -> Int {
+    var ret: Int = 0
+    for num in array {
+        ret *= num
+    }
+    return (ret / array.count)
 }
 
-*/
+
+
