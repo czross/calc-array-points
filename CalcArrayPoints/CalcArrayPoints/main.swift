@@ -95,6 +95,27 @@ func tupleWork(array: [String], function: ((Int, Int), (Int, Int)) -> (Int, Int)
     return function(first, second)
 }
 
+func addPointsDict(pointOne: [String:Double], pointTwo: [String:Double]) -> [String:Double] {
+    let xPoint: Double = pointOne["x"]! + pointTwo["x"]!
+    let yPoint: Double = pointOne["y"]! + pointTwo["y"]!
+    let ret: [String:Double] = [
+        "x" : xPoint,
+        "y" : yPoint
+    ]
+    return ret
+}
+
+func subPointsDict(pointOne: [String:Double], pointTwo: [String:Double]) -> [String:Double] {
+    let xPoint: Double = pointOne["x"]! - pointTwo["x"]!
+    let yPoint: Double = pointOne["y"]! - pointTwo["y"]!
+    let ret: [String:Double] = [
+        "x" : xPoint,
+        "y" : yPoint
+    ]
+    return ret
+}
+
+
 let response = readLine(strippingNewline: true)!
 
 if (response == nil || response.isEmpty) {
@@ -105,7 +126,7 @@ if (response == nil || response.isEmpty) {
     var arrayLength = allArray.count
     var answer: Int
     var tupleAnswer: (Int, Int)
-    var dictAnswer: [String:Int]
+    var dictAnswer: [String:Double]
     var choice = allArray[arrayLength - 1]
     if (choice == "+" || choice == "-" || choice == "*" || choice == "/") {
         if (choice == "+") {
@@ -136,6 +157,7 @@ if (response == nil || response.isEmpty) {
             }
         }
     } else if (choice == "addDict" || choice == "subDict"){
+        var entry = allArray[0]
         
     } else {
         print("Please choose one of the correct options")
