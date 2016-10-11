@@ -115,6 +115,18 @@ func subPointsDict(pointOne: [String:Double], pointTwo: [String:Double]) -> [Str
     return ret
 }
 
+func workDict(array: [Double], operation: ([String:Double], [String:Double]) -> [String:Double]) -> [String:Double] {
+    let pointOne: [String:Double] = [
+        "x" : Double.init(array[0]),
+        "y" : Double.init(array[1])
+    ]
+    let pointTwo: [String:Double] = [
+        "x" : Double.init(array[2]),
+        "y" : Double.init(array[3])
+    ]
+    return operation(pointOne, pointTwo)
+}
+
 
 let response = readLine(strippingNewline: true)!
 
@@ -155,6 +167,8 @@ if (response == nil || response.isEmpty) {
             } else {
                 tupleAnswer = tupleWork(array: allArray, function: subPointsTubple)
             }
+        } else {
+            print("Please only enter 4 digits")
         }
     } else if (choice == "addDict" || choice == "subDict"){
         var entry = allArray[0]
