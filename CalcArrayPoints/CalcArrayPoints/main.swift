@@ -70,9 +70,16 @@ func arrayMath(array: [Int], sum: ([Int]) -> Int) -> Int {
     return (ret / array.count)
 }
 
-func complicatedMath(array: [Int], operation: ([Int]) -> Int) -> Int {
+func complicatedMath(array: [String], operation: ([Int]) -> Int) -> Int {
     var ret: Int = 0
-    ret = operation(array)
+    var intArray: [Int] = []
+    let max = array.count - 1
+    var count = 0
+    while (count < max) {
+        intArray.append(Int.init(array[count])!)
+        count += 1
+    }
+    ret = operation(intArray)
     return ret
 }
 
@@ -96,7 +103,9 @@ if (response == nil || response.isEmpty) {
         } else {
             answer = simpleMath(firstNum: allArray[0], secondNum: allArray[1], operand: divide)
         }
-    } else {
-        
+    } else if (choice == "add" || choice == "mul" || choice == "count" || choice == "avg") {
+        if (choice == "add") {
+            answer = complicatedMath(array: allArray, operation: arrayAdd)
+        }
     }
 }
