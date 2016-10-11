@@ -10,8 +10,7 @@ import Foundation
 
 
 func add(first: Int, second: Int) -> Int {
-    let ret = first + second
-    return ret
+        return first + second
 }
 
 func subtract(first: Int, second: Int) -> Int {
@@ -32,8 +31,7 @@ func divide(first: Int, second: Int) -> Int {
 func simpleMath(firstNum: String, secondNum: String, operand: (Int, Int) -> Int) -> Int {
     let numOne = Int.init(firstNum)
     let numTwo = Int.init(secondNum)
-    let ret = operand(numOne!, numTwo!)
-    return ret
+    return operand(numOne!, numTwo!)
 }
 
 func arrayAdd(array: [Int]) -> Int {
@@ -77,6 +75,26 @@ func complicatedMath(array: [String], operation: ([Int]) -> Int) -> Int {
     return ret
 }
 
+func addPointsTubple(pointOne: (Int, Int), pointTwo: (Int, Int)) -> (Int, Int) {
+    var ret = (0, 0)
+    ret.0 = pointOne.0 + pointTwo.0
+    ret.1 = pointOne.1 + pointTwo.1
+    return ret
+}
+
+func subPointsTubple(pointOne: (Int, Int), pointTwo: (Int, Int)) -> (Int, Int) {
+    var ret = (0, 0)
+    ret.0 = pointOne.0 - pointTwo.0
+    ret.1 = pointOne.1 - pointTwo.1
+    return ret
+}
+
+func tupleWork(array: [String], function: ((Int, Int), (Int, Int)) -> (Int, Int)) -> (Int, Int) {
+    let first = (Int.init(array[0])!, Int.init(array[1])!)
+    let second = (Int.init(array[2])!, Int.init(array[3])!)
+    return function(first, second)
+}
+
 let response = readLine(strippingNewline: true)!
 
 if (response == nil || response.isEmpty) {
@@ -85,11 +103,13 @@ if (response == nil || response.isEmpty) {
     var allArray = response.characters.split(whereSeparator: { $0 == " " })
     .map(String.init)
     var arrayLength = allArray.count
-    var answer: Int = 0
+    var answer: Int
+    var tupleAnswer: (Int, Int)
+    var dictAnswer: [String:Int]
     var choice = allArray[arrayLength - 1]
     if (choice == "+" || choice == "-" || choice == "*" || choice == "/") {
         if (choice == "+") {
-            answer = simpleMath(firstNum: allArray[0], secondNum: allArray[1], operand: add)
+            answer =  simpleMath(firstNum: allArray[0], secondNum: allArray[1], operand: add)
         } else if (choice == "-") {
             answer = simpleMath(firstNum: allArray[0], secondNum: allArray[1], operand: subtract)
         } else if (choice == "*") {
@@ -107,5 +127,17 @@ if (response == nil || response.isEmpty) {
         } else {
             answer = complicatedMath(array: allArray, operation: arrayAverage)
         }
+    } else if (choice == "addTuple" || choice == "subTuples"){
+        if (allArray.count == 5) {
+            if (choice == "addTubple") {
+                tupleAnswer = tupleWork(array: allArray, function: addPointsTubple)
+            } else {
+                tupleAnswer = tupleWork(array: allArray, function: subPointsTubple)
+            }
+        }
+    } else if (choice == "addDict" || choice == "subDict"){
+        
+    } else {
+        print("Please choose one of the correct options")
     }
 }
