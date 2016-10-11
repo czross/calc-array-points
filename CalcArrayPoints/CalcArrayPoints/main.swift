@@ -29,8 +29,10 @@ func divide(first: Int, second: Int) -> Int {
     return ret
 }
 
-func simpleMath(firstNum: Int, secondNum: Int, operand: (Int, Int) -> Int) -> Int {
-    let ret = operand(firstNum, secondNum)
+func simpleMath(firstNum: String, secondNum: String, operand: (Int, Int) -> Int) -> Int {
+    let numOne = Int.init(firstNum)
+    let numTwo = Int.init(secondNum)
+    let ret = operand(numOne!, numTwo!)
     return ret
 }
 
@@ -85,7 +87,15 @@ if (response == nil || response.isEmpty) {
     var answer: Int = 0
     var choice = allArray[arrayLength - 1]
     if (choice == "+" || choice == "-" || choice == "*" || choice == "/") {
-        
+        if (choice == "+") {
+            answer = simpleMath(firstNum: allArray[0], secondNum: allArray[1], operand: add)
+        } else if (choice == "-") {
+            answer = simpleMath(firstNum: allArray[0], secondNum: allArray[1], operand: subtract)
+        } else if (choice == "*") {
+            answer = simpleMath(firstNum: allArray[0], secondNum: allArray[1], operand: multiply)
+        } else {
+            answer = simpleMath(firstNum: allArray[0], secondNum: allArray[1], operand: divide)
+        }
     } else {
         
     }
