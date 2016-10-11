@@ -115,14 +115,14 @@ func subPointsDict(pointOne: [String:Double], pointTwo: [String:Double]) -> [Str
     return ret
 }
 
-func workDict(array: [Double], operation: ([String:Double], [String:Double]) -> [String:Double]) -> [String:Double] {
+func workDict(array: [String], operation: ([String:Double], [String:Double]) -> [String:Double]) -> [String:Double] {
     let pointOne: [String:Double] = [
-        "x" : Double.init(array[0]),
-        "y" : Double.init(array[1])
+        "x" : Double.init(array[0])!,
+        "y" : Double.init(array[1])!
     ]
     let pointTwo: [String:Double] = [
-        "x" : Double.init(array[2]),
-        "y" : Double.init(array[3])
+        "x" : Double.init(array[2])!,
+        "y" : Double.init(array[3])!
     ]
     return operation(pointOne, pointTwo)
 }
@@ -150,6 +150,7 @@ if (response == nil || response.isEmpty) {
         } else {
             answer = simpleMath(firstNum: allArray[0], secondNum: allArray[1], operand: divide)
         }
+        print(answer)
     } else if (choice == "add" || choice == "mul" || choice == "count" || choice == "avg") {
         if (choice == "add") {
             answer = complicatedMath(array: allArray, operation: arrayAdd)
@@ -160,19 +161,21 @@ if (response == nil || response.isEmpty) {
         } else {
             answer = complicatedMath(array: allArray, operation: arrayAverage)
         }
-    } else if (choice == "addTuple" || choice == "subTuples"){
-        if (allArray.count == 5) {
-            if (choice == "addTubple") {
-                tupleAnswer = tupleWork(array: allArray, function: addPointsTubple)
-            } else {
-                tupleAnswer = tupleWork(array: allArray, function: subPointsTubple)
-            }
+        print(answer)
+    } else if (choice == "addTuple" || choice == "subTuples" && allArray.count == 5){
+        if (choice == "addTubple") {
+            tupleAnswer = tupleWork(array: allArray, function: addPointsTubple)
         } else {
-            print("Please only enter 4 digits")
+            tupleAnswer = tupleWork(array: allArray, function: subPointsTubple)
         }
-    } else if (choice == "addDict" || choice == "subDict"){
-        var entry = allArray[0]
-        
+        print(tupleAnswer)
+    } else if (choice == "addDict" || choice == "subDict" && allArray.count == 5){
+        if(choice == "addDict") {
+            dictAnswer = workDict(array: allArray, operation: addPointsDict)
+        } else {
+            dictAnswer = workDict(array: allArray, operation: subPointsDict)
+        }
+        print(dictAnswer)
     } else {
         print("Please choose one of the correct options")
     }
