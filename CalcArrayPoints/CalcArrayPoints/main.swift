@@ -62,13 +62,31 @@ func arrayAverage(array: [Int]) -> Int {
     return ret
 }
 
-func arrayMath(array: [Int]) -> Int {
+func arrayMath(array: [Int], sum: ([Int]) -> Int) -> Int {
     var ret: Int = 0
-    for num in array {
-        ret *= num
-    }
+    ret = sum(array)
     return (ret / array.count)
 }
 
+func complicatedMath(array: [Int], operation: ([Int]) -> Int) -> Int {
+    var ret: Int = 0
+    ret = operation(array)
+    return ret
+}
 
+let response = readLine(strippingNewline: true)!
 
+if (response == nil || response.isEmpty) {
+    print("please enter something")
+} else {
+    var allArray = response.characters.split(whereSeparator: { $0 == " " })
+    .map(String.init)
+    var arrayLength = allArray.count
+    var answer: Int = 0
+    var choice = allArray[arrayLength - 1]
+    if (choice == "+" || choice == "-" || choice == "*" || choice == "/") {
+        
+    } else {
+        
+    }
+}
