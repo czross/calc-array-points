@@ -64,12 +64,6 @@ func arrayAverage(array: [Int]) -> Int {
     return ret
 }
 
-func arrayMath(array: [Int], sum: ([Int]) -> Int) -> Int {
-    var ret: Int = 0
-    ret = sum(array)
-    return (ret / array.count)
-}
-
 func complicatedMath(array: [String], operation: ([Int]) -> Int) -> Int {
     var ret: Int = 0
     var intArray: [Int] = []
@@ -106,6 +100,12 @@ if (response == nil || response.isEmpty) {
     } else if (choice == "add" || choice == "mul" || choice == "count" || choice == "avg") {
         if (choice == "add") {
             answer = complicatedMath(array: allArray, operation: arrayAdd)
+        } else if (choice == "mul") {
+            answer = complicatedMath(array: allArray, operation: arrayMultiply)
+        } else if (choice == "count") {
+            answer = complicatedMath(array: allArray, operation: arrayCount)
+        } else {
+            answer = complicatedMath(array: allArray, operation: arrayAverage)
         }
     }
 }
